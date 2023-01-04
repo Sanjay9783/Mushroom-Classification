@@ -1,3 +1,4 @@
+'''
 import pymongo
 
 # Provide the mongodb localhost url to connect python to mongodb.
@@ -23,3 +24,21 @@ all_record = collection.find()
 # Printing all records present in the collection
 for idx, record in enumerate(all_record):
      print(f"{idx}: {record}")
+'''
+
+##############################################
+from mushroom_classification.pipeline.training_pipeline import start_training_pipeline
+# from mushroom_classification.pipeline.batch_prediction import start_batch_prediction
+
+file_path="/config/workspace/aps_failure_training_set1.csv"
+
+print(__name__)
+
+
+if __name__=="__main__":
+     try:
+          start_training_pipeline()
+          #output_file = start_batch_prediction(input_file_path=file_path)
+          #print(output_file)
+     except Exception as e:
+          print(e)

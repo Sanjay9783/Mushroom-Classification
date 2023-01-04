@@ -8,8 +8,6 @@ import pandas as pd
 from mushroom_classification import utils
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
-from imblearn.combine import SMOTETomek
-from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import RobustScaler
 from mushroom_classification.config import TARGET_COLUMN
 

@@ -6,6 +6,7 @@ import os,sys
 from xgboost import XGBClassifier
 from mushroom_classification import utils
 from sklearn.metrics import f1_score , accuracy_score
+import pickle
 
 
 class ModelTrainer:
@@ -52,6 +53,9 @@ class ModelTrainer:
 
             logging.info(f"Train the model")
             model = self.train_model(x=x_train,y=y_train)
+
+            logging.info(f"dumping model to pickle")
+            pickle.dump(model, open('save_model/model.pickle', 'wb'))
             
 
             logging.info(f"Calculating f1 train score")

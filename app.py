@@ -7,7 +7,7 @@ import base64
 
 st.set_page_config(page_title='Mushrooms Prediction')
 st.title('Mushroom Prediction 🍄')
-st.subheader('Lets Find our Edible Mushrooms here !!! 🤤')
+st.subheader('mushroom classification by Sanjay A V')
 
 upload_file=st.file_uploader('Choose a csv')
 

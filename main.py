@@ -30,7 +30,7 @@ for idx, record in enumerate(all_record):
 from mushroom_classification.pipeline.training_pipeline import start_training_pipeline
 # from mushroom_classification.pipeline.batch_prediction import start_batch_prediction
 
-file_path="/config/workspace/aps_failure_training_set1.csv"
+# file_path="/config/workspace/aps_failure_training_set1.csv"
 
 print(__name__)
 

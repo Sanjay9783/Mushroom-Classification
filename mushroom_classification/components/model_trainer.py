@@ -55,7 +55,7 @@ class ModelTrainer:
             model = self.train_model(x=x_train,y=y_train)
 
             logging.info(f"dumping model to pickle")
-            pickle.dump(model, open('save_model/model.pickle', 'wb'))
+            pickle.dump(model, open('save_model/model.pkl', 'wb'))
             
 
             logging.info(f"Calculating f1 train score")

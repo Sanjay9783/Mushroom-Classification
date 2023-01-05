@@ -17,7 +17,10 @@ if upload_file:
     file=app_clean.data_clean(df=data)
 
     loaded_model = joblib.load(open("save_model/model.pkl", 'rb'))
-    model=pd.DataFrame(loaded_model.predict(file))
+
+    prediction = loaded_model.predict(file)
+
+    model=pd.DataFrame(prediction)
     result=model.replace({0:'Edible' , 1:'Poisons'})
     st.dataframe(result)
 

@@ -19,7 +19,7 @@ if upload_file:
     for col in data.columns:
         data[col] = label_encoder.fit_transform(data[col])
 
-    loaded_model = joblib.load(open("/config/workspace/save_model/model.pkl", 'rb'))
+    loaded_model = joblib.load(open("save_model/model.pkl", 'rb'))
     model=pd.DataFrame(loaded_model.predict(data))
     result=model.replace({0:'Edible' , 1:'Poisons'})
     st.dataframe(result)

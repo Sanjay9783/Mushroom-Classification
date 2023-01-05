@@ -2,6 +2,7 @@ import pickle
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
+'''
 model = pickle.load(open('save_model/model.pickle', 'rb'))
 
 df = pd.read_csv('/config/workspace/artifact/01042023__150114/data_ingestion/dataset/test.csv')
@@ -18,6 +19,7 @@ p = model.predict(df)
 
 df['result']= p
 print(df.head(4)) 
+'''
 
 class app_clean:
     def data_clean(df):

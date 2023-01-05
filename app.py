@@ -24,7 +24,7 @@ if upload_file:
 
     file=data_clean(df=data)
 
-    loaded_model = pickle.load(open("save_model/model.pkl", 'rb'))
+    loaded_model = joblib.load(open("save_model/model.pkl", 'rb'))
 
     prediction = loaded_model.predict(file)
 

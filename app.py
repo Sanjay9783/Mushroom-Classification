@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
-from sklearn.preprocessing import LabelEncoder
+from pred import app_clean
 import joblib
 import base64
 
@@ -14,13 +14,10 @@ if upload_file:
     st.markdown('-----')
     data=pd.read_csv(upload_file)
 
-
-    label_encoder = LabelEncoder()
-    for col in data.columns:
-        data[col] = label_encoder.fit_transform(data[col])
+    file=app_clean.data_clean(df=data)
 
     loaded_model = joblib.load(open("save_model/model.pkl", 'rb'))
-    model=pd.DataFrame(loaded_model.predict(data))
+    model=pd.DataFrame(loaded_model.predict(file))
     result=model.replace({0:'Edible' , 1:'Poisons'})
     st.dataframe(result)
 

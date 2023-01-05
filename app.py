@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import pickle
 from sklearn.preprocessing import LabelEncoder
-#from app_frame import app_frame
 import joblib
 import base64
 
@@ -14,7 +13,7 @@ upload_file=st.file_uploader('Choose a csv')
 if upload_file:
     st.markdown('-----')
     data=pd.read_csv(upload_file)
-    #file=app_frame.data_clean(df=data)
+
 
     label_encoder = LabelEncoder()
     for col in data.columns:
@@ -29,7 +28,7 @@ download=st.button('Download prediction')
 if download:
   'Download Started!'
   csv = result.to_csv(index=False)
-  b64 = base64.b64encode(csv.encode()).decode()  # some strings
+  b64 = base64.b64encode(csv.encode()).decode()
   linko= f'<a href="data:file/csv;base64,{b64}" download="mushrooms_prediction.csv">Download csv file</a>'
   st.markdown(linko, unsafe_allow_html=True)
 

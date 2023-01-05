@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
-from pred import app_clean
+from sklearn.preprocessing import LabelEncoder
 import joblib
 import base64
 
@@ -10,13 +10,21 @@ st.title('Mushroom Prediction 🍄')
 st.subheader('Lets Find our Edible Mushrooms here !!! 🤤')
 
 upload_file=st.file_uploader('Choose a csv')
+
+def data_clean(df):
+    encoder = LabelEncoder()
+    for column in range(len(df.columns)):
+        df[df.columns[column]]= encoder.fit_transform(df[df.columns[column]])
+    return df
+
+
 if upload_file:
     st.markdown('-----')
     data=pd.read_csv(upload_file)
 
-    file=app_clean.data_clean(df=data)
+    file=data_clean(df=data)
 
-    loaded_model = joblib.load(open("save_model/model.pkl", 'rb'))
+    loaded_model = pickle.load(open("save_model/model.pkl", 'rb'))
 
     prediction = loaded_model.predict(file)
 

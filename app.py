@@ -18,18 +18,12 @@ def data_clean(df):
         df[df.columns[column]]= encoder.fit_transform(df[df.columns[column]])
     return df
 
-
 if upload_file:
     st.markdown('-----')
     data=pd.read_csv(upload_file)
-
     file=data_clean(df=data)
-
     loaded_model = joblib.load(open("save_model/model.pkl", 'rb'))
-
-    prediction = loaded_model.predict(file)
-
-    model=pd.DataFrame(prediction)
+    model=pd.DataFrame(loaded_model.predict(file))
     result=model.replace({0:'Edible' , 1:'Poisons'})
     st.dataframe(result)
 

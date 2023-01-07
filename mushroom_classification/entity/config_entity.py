@@ -57,19 +57,6 @@ class DataIngestionConfig:
         except Exception  as e:
             raise mushroomException(e,sys)     
 
-'''
-input for data_validation
-'''
-class DataValidationConfig:
-
-    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
-        self.data_validation_dir = os.path.join(training_pipeline_config.artifact_dir , "data_validation")
-        # report after validation is stored here
-        self.report_file_path=os.path.join(self.data_validation_dir, "report.yaml")
-        self.missing_threshold:float = 0.2
-        ## cleaned file for comparision
-        self.base_file_path = os.path.join("mushrooms.csv")
-
 
 class DataTransformationConfig:
 
@@ -87,19 +74,3 @@ class ModelTrainerConfig:
         self.model_path = os.path.join(self.model_trainer_dir,"model",MODEL_FILE_NAME)
         self.expected_score = 0.7
         self.overfitting_threshold = 0.1
-
-
-class ModelEvaluationConfig:
-    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
-        self.change_threshold = 0.01
-
-
-        
-class ModelPusherConfig:
-    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
-        self.model_pusher_dir = os.path.join(training_pipeline_config.artifact_dir , "model_pusher")
-        self.saved_model_dir = os.path.join("saved_models")
-        self.pusher_model_dir = os.path.join(self.model_pusher_dir,"saved_models")
-        self.pusher_model_path = os.path.join(self.pusher_model_dir,MODEL_FILE_NAME)
-        self.pusher_transformer_path = os.path.join(self.pusher_model_dir,TRANSFORMER_OBJECT_FILE_NAME)
-        self.pusher_target_encoder_path = os.path.join(self.pusher_model_dir,TARGET_ENCODER_OBJECT_FILE_NAME)
